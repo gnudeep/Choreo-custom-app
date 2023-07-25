@@ -13,9 +13,12 @@ COPY entrypoint.sh /entrypoint.sh
 # Make the entrypoint script executable
 RUN chmod +x /entrypoint.sh
 
+
+# Set the user to the non-root user
+
+USER 19001 
+
 # Set the entrypoint script as the Docker entrypoint
 ENTRYPOINT ["/entrypoint.sh"]
 
-# Set the user to the non-root user
-USER dnsperfuser
 
