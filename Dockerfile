@@ -5,7 +5,7 @@ FROM alpine:latest
 RUN apk add --no-cache dnsperf
 
 # Create a non-root user
-RUN adduser -D -u 1000 dnsperfuser
+RUN adduser -D -u 10001 dnsperfuser
 
 # Copy the entrypoint script
 COPY entrypoint.sh /entrypoint.sh
