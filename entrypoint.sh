@@ -6,7 +6,7 @@ dns_server=$(awk '/^nameserver/ { print $2; exit }' /etc/resolv.conf)
 # Generate the DNSPerf configuration file
 cat <<EOF >dnsperf.conf
 - QPS: 1000
-  Duration: 30
+  Duration: 10
   Warmup: 5
   Threads: 10
   Nameserver: $dns_server
