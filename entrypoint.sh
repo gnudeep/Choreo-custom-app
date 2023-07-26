@@ -3,16 +3,5 @@
 # Get the DNS server IP from /etc/resolv.conf
 dns_server=$(awk '/^nameserver/ { print $2; exit }' /etc/resolv.conf)
 
-# Generate the DNSPerf configuration file
-cat <<EOF >/tmp/dnsperf.conf
-- QPS: 1000
-  Duration: 10
-  Warmup: 5
-  Threads: 10
-  Nameserver: $dns_server
-  Name: choreo.dev
-EOF
-
-# Run the DNSPerf test
-exec dnsperf -c dnsperf.conf
+exec dnsperf -s "$dns_server" -d 10 -l 30 -w 5 -c 10 choreo.dev
 
